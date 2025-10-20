@@ -10,7 +10,7 @@
     "lint": "eslint",
     "format": "prettier",
     "check": "prettier --write . && eslint --fix",
-    "deploy": "wrangler deploy"
+    "wrangler:deploy": "wrangler deploy"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.13.10",
@@ -49,6 +49,6 @@
     "vite": "^7.1.9",
     "vitest": "^3.2.4",
     "web-vitals": "^5.1.0",
-    "wrangler": "^4.42.0"
+    "wrangler": "^4.43.0"
   }
 }
