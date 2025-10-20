@@ -5,7 +5,14 @@ import { createServerFn } from '@tanstack/react-start'
 
 const filePath = 'todos.json'
 
-async function readTodos() {
+type Todo = {
+  id: number
+  name: string
+}
+
+async function readTodos(): Promise<Todo[]> {
+  // const json = fs.readFileSync(process.cwd() + '/todos.json', 'utf-8')
+  // console.log(json)
   return JSON.parse(
     await fs.promises.readFile(filePath, 'utf-8').catch(() =>
       JSON.stringify(
@@ -22,7 +29,21 @@ async function readTodos() {
 
 const getTodos = createServerFn({
   method: 'GET',
-}).handler(async () => await readTodos())
+}).handler(async (): Promise<Todo[]> => {
+  const json = fs.readFileSync('todos.json', 'utf-8')
+  return JSON.parse(
+    await fs.promises.readFile(filePath, 'utf-8').catch(() =>
+      JSON.stringify(
+        [
+          { id: 1, name: 'Get groceries' },
+          { id: 2, name: 'Buy a new phone' },
+        ],
+        null,
+        2,
+      ),
+    ),
+  )
+})
 
 const addTodo = createServerFn({ method: 'POST' })
   .inputValidator((d: string) => d)
