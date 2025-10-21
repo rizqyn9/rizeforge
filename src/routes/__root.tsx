@@ -2,9 +2,7 @@ import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
-import Header from '../components/Header'
-
-import appCss from '../styles.css?url'
+import tailwindCss from '../styles/tailwind.css?url'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -23,7 +21,7 @@ export const Route = createRootRoute({
     links: [
       {
         rel: 'stylesheet',
-        href: appCss,
+        href: tailwindCss,
       },
     ],
   }),
@@ -38,7 +36,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <Header />
         {children}
         <TanStackDevtools
           config={{
