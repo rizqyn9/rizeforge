@@ -1,11 +1,16 @@
 {
-  "files.watcherExclude": {
-    "**/routeTree.gen.ts": true
+  "prettier.enable": true,
+  "eslint.enable": true,
+  "todo-tree.tree.scanMode": "workspace only",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
   },
-  "search.exclude": {
-    "**/routeTree.gen.ts": true
+  "[markdown]": {
+    "editor.formatOnSave": false
   },
-  "files.readonlyInclude": {
-    "**/routeTree.gen.ts": true
-  }
+  "markdown.styles": [],
+  "tailwindCSS.classFunctions": [
+    "cva",
+    "cx"
+  ],
 }

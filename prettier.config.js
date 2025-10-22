@@ -1,10 +1,45 @@
-//  @ts-check
+// @ts-check
 
-/** @type {import('prettier').Config} */
-const config = {
+const functions = ['cn', 'clsx', 'cva', 'tw']
+
+/** @type {import("prettier").Config} */
+export default {
   semi: false,
+  tabWidth: 2,
+  printWidth: 100,
   singleQuote: true,
-  trailingComma: "all",
-};
-
-export default config;
+  jsxSingleQuote: true,
+  trailingComma: 'es5',
+  endOfLine: 'lf',
+  arrowParens: 'avoid',
+  quoteProps: 'as-needed',
+  bracketSameLine: false,
+  bracketSpacing: true,
+  htmlWhitespaceSensitivity: 'strict',
+  tailwindAttributes: ['tw'],
+  tailwindFunctions: functions,
+  customFunctions: functions,
+  tailwindStylesheet: './app/styles/tailwind.css',
+  endingPosition: 'absolute-with-indent',
+  importOrder: [
+    '^(react/(.*)$)|^(react$)',
+    '<THIRD_PARTY_MODULES>',
+    '',
+    '^~/components/(.*)$',
+    '',
+    '^~/features/(.*)$',
+    '',
+    '^~/(.*)$',
+    '',
+    '^[./-]',
+    '^[./]',
+    '',
+  ],
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
+  importOrderBuiltinModulesToTop: true,
+  importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
+  importOrderMergeDuplicateImports: true,
+  importOrderCombineTypeAndValueImports: true,
+  plugins: ['@ianvs/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss'],
+}
