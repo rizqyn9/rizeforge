@@ -8,7 +8,7 @@ export const SOCIALS = [
   },
   {
     label: 'Linkedin',
-    href: 'https://www.linkedin.com/in/rizqyn9',
+    href: 'https://www.linkedin.com/in/rizqynugroho9',
     icon: <LinkedinIcon />,
   },
   {
