@@ -13,4 +13,7 @@
     "cva",
     "cx"
   ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }

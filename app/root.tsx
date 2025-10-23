@@ -6,6 +6,14 @@ import './styles/tailwind.css'
 
 import { CONFIG } from './config/config'
 
+export const meta: Route.MetaFunction = () => {
+  return [
+    { title: CONFIG.APP_NAME },
+    { name: 'description', content: "Hi there, I'm Rizqy" },
+    { name: 'theme-color', content: '#ffffff' },
+  ]
+}
+
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
   {

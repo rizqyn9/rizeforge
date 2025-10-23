@@ -171,3 +171,7 @@
     --tw-ring-offset-color: var(--color-background);
   }
 }
+
+@utility container {
+  @apply mx-auto px-4 sm:px-8 lg:px-16 max-w-[1200px];
+}
