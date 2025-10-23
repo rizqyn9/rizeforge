@@ -1,5 +1,6 @@
 import { PostCard, type PostCardProps } from '~/components/block/post-card'
 import { ScrollIcon } from '~/components/icons'
+import { LightStick } from '~/components/ui/light-stick'
 import { ShimmerButton } from '~/components/ui/shimmer-button'
 
 import { SOCIALS } from '~/config/socials'
@@ -10,6 +11,7 @@ export default function Page() {
     <>
       <HeroSection />
       <FeaturedPosts />
+      <ProjectSection />
     </>
   )
 }
@@ -56,11 +58,16 @@ export function HeroSection() {
 
 function HeroContent() {
   return (
-    <div className={`z-20 flex min-h-svh flex-col items-center justify-center`}>
+    <div
+      className={cx(
+        'z-20 flex min-h-svh flex-col items-center justify-center',
+        'animate-in duration-1000 blur-in-lg'
+      )}
+    >
       <h1 className={`text-3xl font-semibold md:text-4xl`}>Hi there, i&apos;m Rizqy</h1>
 
       <div className={`mt-6 px-8 text-center md:mt-8 md:max-w-2xl md:px-0 md:text-xl`}>
-        <p className={`text-gray-300 [&>b]:text-foreground`}>
+        <p className={`text-gray-100 [&>b]:text-primary`}>
           <b>Fullstack Engineer</b> and mostly <b>Frontend Engineer</b> with a passion for building
           high-performance web applications that scale.
         </p>
@@ -91,8 +98,13 @@ function HeroContent() {
 
 function ScrollMotion() {
   return (
-    <div className='absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center'>
-      <div className=''>
+    <div
+      className={cx(
+        'absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center',
+        'animate-in duration-1000 fade-in-0 slide-in-from-bottom-80'
+      )}
+    >
+      <div className='animate-caret-blink'>
         <ScrollIcon />
       </div>
       <p className='mt-2 text-sm tracking-wider'>[ scroll ]</p>
@@ -104,19 +116,11 @@ function FeaturedPosts() {
   return (
     <div className='relative container flex max-w-4xl flex-col items-stretch bg-black py-16'>
       <div className='flex items-center justify-between py-4'>
-        <div>
-          <h2 className='text-2xl font-bold'>
-            <span className='text-gray-200'>Featured</span>
-            <span className='bg-linear-to-br from-white/30 via-white/90 to-white/30 bg-clip-text text-transparent transition-colors'>
-              &nbsp;Posts
-            </span>
-          </h2>
-        </div>
+        <h2 className='text-2xl font-bold'>Blogs</h2>
         <p className='animate-pulse'>[ see more ]</p>
       </div>
-      {/* Border gradient */}
-      <div className='flex h-1 animate-pulse items-center justify-center bg-linear-to-t from-white/70 to-transparent'></div>
-      <p className='mx-auto mt-8 max-w-lg text-center text-sm text-gray-300'>
+      <LightStick direction={'x'} />
+      <p className='mx-auto mt-8 max-w-lg text-left text-sm text-white/80 lg:text-center'>
         A collection of my thoughts, ideas, and experiences. I write about various topics, including
         web development, technology, and personal topics.
       </p>
@@ -194,3 +198,28 @@ const MOCK_POSTS: PostCardProps[] = [
     readingTime: '5 min read',
   },
 ]
+
+function ProjectSection() {
+  return (
+    <div className='relative container flex max-w-4xl flex-col items-stretch bg-black py-16'>
+      <div className='flex items-center justify-between py-4'>
+        <div>
+          <h2 className='text-2xl font-bold text-primary-foreground'>Projects</h2>
+        </div>
+        <p className='animate-pulse'>[ see more ]</p>
+      </div>
+      <LightStick direction={'x'} />
+      <p className='mx-auto mt-8 max-w-lg text-center text-sm text-gray-300'>
+        A collection of my thoughts, ideas, and experiences. I write about various topics, including
+        web development, technology, and personal topics.
+      </p>
+      <div className='mt-8'>
+        {/* <ul className='grid gap-4 md:grid-cols-2'>
+          {MOCK_PROJECTS.map(project => (
+            <ProjectCard {...project} key={project.slug} />
+          ))}
+        </ul> */}
+      </div>
+    </div>
+  )
+}
