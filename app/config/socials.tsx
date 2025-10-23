@@ -1,4 +1,4 @@
-import { BluSkyIcon, GithubIcon, LinkedinIcon, MediumIcon } from '~/components/icons'
+import { BluSkyIcon, GithubIcon, LinkedinIcon, MediumIcon, ReadCvIcon } from '~/components/icons'
 
 export const SOCIALS = [
   {
@@ -12,13 +12,18 @@ export const SOCIALS = [
     icon: <LinkedinIcon />,
   },
   {
+    label: 'BluSky',
+    href: 'https://blu-sky.com/rizqy',
+    icon: <BluSkyIcon />,
+  },
+  {
     label: 'Medium',
     href: 'https://medium.com/@rizqynugroho88',
     icon: <MediumIcon />,
   },
   {
-    label: 'BluSky',
-    href: 'https://blu-sky.com/rizqy',
-    icon: <BluSkyIcon />,
+    label: 'Resume',
+    href: 'https://rizqy.com/resume',
+    icon: <ReadCvIcon />,
   },
 ]

@@ -4,6 +4,8 @@ import type { Route } from './+types/root'
 
 import './styles/tailwind.css'
 
+import { CONFIG } from './config/config'
+
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
   {
@@ -26,6 +28,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta name='title' content={CONFIG.APP_NAME} />
         <Meta />
         <Links />
       </head>

@@ -3,7 +3,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-background: oklch(0.209 0 0);
+  /* --color-background: oklch(0.209 0 0); */
+  --color-background: oklch(0 0 0);
   --color-foreground: oklch(0.985 0 0);
 }
 
@@ -122,6 +123,7 @@
       transform: translate(calc(100cqw - 100%), 0);
     }
   }
+
   @keyframes spin-around {
     0% {
       transform: translateZ(0) rotate(0);
@@ -152,5 +154,20 @@
     background-image: url('/bg-pattern.svg');
     background-repeat: repeat;
     background-size: 100%;
+  }
+}
+
+@layer components {
+  .offset-border {
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width))
+      var(--tw-ring-color, currentcolor);
+    box-shadow:
+      var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow),
+      var(--tw-ring-shadow), var(--tw-shadow);
+    --tw-ring-color: var(--border);
+    --tw-ring-offset-width: 2px;
+    --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width)
+      var(--tw-ring-offset-color);
+    --tw-ring-offset-color: var(--color-background);
   }
 }
