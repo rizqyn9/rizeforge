@@ -1,22 +1,29 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "rizeforge",
-  "compatibility_date": "2025-09-15",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
-  "main": "./workers/app.ts",
-  "vars": {
-    "MY_VAR": "Hello from Cloudflare"
-  },
-  "observability": {
-    "enabled": false,
-    "head_sampling_rate": 1,
-    "logs": {
-      "enabled": true,
-      "head_sampling_rate": 1,
-      "persist": true,
-      "invocation_logs": true
-    }
-  }
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "rizeforge",
+	"compatibility_date": "2025-09-15",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"main": "./workers/app.ts",
+	"vars": {
+		"MY_VAR": "Hello from Cloudflare"
+	},
+	"observability": {
+		"enabled": false,
+		"head_sampling_rate": 1,
+		"logs": {
+			"enabled": true,
+			"head_sampling_rate": 1,
+			"persist": true,
+			"invocation_logs": true
+		}
+	},
+	"r2_buckets": [
+		{
+			"bucket_name": "rizeforge",
+			"binding": "rizeforge",
+			"remote": true
+		}
+	]
 }
