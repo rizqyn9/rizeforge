@@ -27,9 +27,7 @@ export default function Page({ loaderData }: Route.ComponentProps) {
     <div className='container pt-navbar'>
       <h1>Blog Details</h1>
       <div className='shiki prose-sm'>
-        {/* <MDXContent code={blog.mdx} /> */}
         <SafeMdxRenderer
-          // markdown={blog.content}
           markdown={blog.mdx}
           mdast={ast}
           renderNode={node => {
