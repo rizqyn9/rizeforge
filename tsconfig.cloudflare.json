@@ -6,7 +6,10 @@
     "app/**/.server/**/*",
     "app/**/.client/**/*",
     "workers/**/*",
-    "worker-configuration.d.ts"
+    "worker-configuration.d.ts",
+    "source.config.ts",
+    "react-router.config.ts",
+    ".source/**/*",
   ],
   "compilerOptions": {
     "composite": true,
@@ -31,6 +34,12 @@
     "paths": {
       "~/*": [
         "./app/*"
+      ],
+      "content-collections": [
+        "./.content-collections/generated"
+      ],
+      "@docs": [
+        ".source"
       ]
     },
     "esModuleInterop": true,

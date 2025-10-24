@@ -1,10 +1,25 @@
-import { PostCard, type PostCardProps } from '~/components/block/post-card'
+import type { SitemapHandle } from '@forge42/seo-tools/remix/sitemap'
+import { allPosts } from 'content-collections'
+
+import { PostCard } from '~/components/block/post-card'
 import { ScrollIcon } from '~/components/icons'
 import { LightStick } from '~/components/ui/light-stick'
 import { ShimmerButton } from '~/components/ui/shimmer-button'
 
 import { SOCIALS } from '~/config/socials'
 import { cx } from '~/lib/cva'
+
+export const handle: SitemapHandle<{ foo?: string }> = {
+  sitemap: async (domain, url) => {
+    return [
+      {
+        route: `${domain}${url}`,
+        changefreq: 'monthly',
+        priority: 1.0,
+      },
+    ]
+  },
+}
 
 export default function Page() {
   return (
@@ -38,7 +53,7 @@ export default function Page() {
 
 export function HeroSection() {
   return (
-    <div className='relative container flex min-h-dvh w-full items-center justify-center'>
+    <div className='relative container flex min-h-160 w-full items-center justify-center md:min-h-lvh'>
       <div
         className={cx(
           'absolute inset-0',
@@ -46,10 +61,7 @@ export function HeroSection() {
           'bg-[radial-gradient(#404040_1px,transparent_1px)]'
         )}
       />
-      {/* Radial gradient for the container to give a faded look */}
-      <div
-        className={`pointer-events-none absolute inset-0 flex items-center justify-center bg-background mask-[radial-gradient(ellipse_at_center,transparent_10%,var(--color-background)_80%)]`}
-      />
+      <div className='pointer-events-none absolute inset-0 flex items-center justify-center bg-background mask-[radial-gradient(ellipse_at_center,transparent_10%,var(--color-background)_80%)]' />
       <HeroContent />
       <ScrollMotion />
     </div>
@@ -60,7 +72,7 @@ function HeroContent() {
   return (
     <div
       className={cx(
-        'z-20 flex min-h-svh flex-col items-center justify-center',
+        'z-20 flex h-full flex-col items-center justify-center',
         'animate-in duration-1000 blur-in-lg'
       )}
     >
@@ -126,8 +138,18 @@ function FeaturedPosts() {
       </p>
       <div className='mt-8'>
         <ul className='grid gap-4 md:grid-cols-2'>
-          {MOCK_POSTS.map(post => (
-            <PostCard {...post} key={post.slug} />
+          {allPosts.map(post => (
+            <PostCard
+              key={post._meta.filePath}
+              slug={post._meta.fileName}
+              title={post.title}
+              description={post.summary}
+              image={
+                'https://images.unsplash.com/photo-1566410824233-a8011929225c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670'
+              }
+              publishedAt={'Sep 29, 2025'}
+              readingTime={'5 min read'}
+            />
           ))}
         </ul>
       </div>
@@ -154,50 +176,6 @@ function FeaturedPosts() {
     </div>
   )
 }
-
-const MOCK_POSTS: PostCardProps[] = [
-  {
-    slug: 'prevent-form-spamming-honeypot-1',
-    title:
-      'Prevent AI Bots from spamming your forms with honeypots Prevent AI Bots from spamming your forms with honeypots',
-    description:
-      'Learn how to implement a honeypot to protect your form from spam submissions by AI or regular bots.',
-    image:
-      'https://images.unsplash.com/photo-1566410824233-a8011929225c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670',
-    publishedAt: 'Sep 29, 2025',
-    readingTime: '5 min read',
-  },
-  {
-    slug: 'prevent-form-spamming-honeypot-2',
-    title: 'Prevent AI Bots from spamming your forms with honeypots',
-    description:
-      'Learn how to implement a honeypot to protect your form from spam submissions by AI or regular bots.',
-    image:
-      'https://images.unsplash.com/photo-1566410824233-a8011929225c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670',
-    publishedAt: 'Sep 29, 2025',
-    readingTime: '5 min read',
-  },
-  {
-    slug: 'prevent-form-spamming-honeypot-3',
-    title: 'Prevent AI Bots from spamming your forms with honeypots',
-    description:
-      'Learn how to implement a honeypot to protect your form from spam submissions by AI or regular bots.',
-    image:
-      'https://images.unsplash.com/photo-1566410824233-a8011929225c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670',
-    publishedAt: 'Sep 29, 2025',
-    readingTime: '5 min read',
-  },
-  {
-    slug: 'prevent-form-spamming-honeypot-4',
-    title: 'Prevent AI Bots from spamming your forms with honeypots',
-    description:
-      'Learn how to implement a honeypot to protect your form from spam submissions by AI or regular bots.',
-    image:
-      'https://images.unsplash.com/photo-1566410824233-a8011929225c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670',
-    publishedAt: 'Sep 29, 2025',
-    readingTime: '5 min read',
-  },
-]
 
 function ProjectSection() {
   return (

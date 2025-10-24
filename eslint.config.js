@@ -49,6 +49,7 @@ export default defineConfig(
     rules: {
       'object-shorthand': ['error', 'always'],
       'no-useless-rename': 'error',
+      '@typescript-eslint/ban-ts-comment': 'off',
     },
   }
   // {

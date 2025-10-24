@@ -23,7 +23,7 @@ export function Header() {
         isScrolled ? 'bg-background/10 backdrop-blur-md' : 'border-b-transparent'
       )}
     >
-      <section className='relative container flex h-16 w-full items-center justify-between'>
+      <section className='relative container flex h-navbar w-full items-center justify-between'>
         <div className='relative flex items-center justify-center'>
           <Link
             to='/'

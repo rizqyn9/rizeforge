@@ -9,6 +9,7 @@ export async function loader({ request }: Route.LoaderArgs) {
     {
       userAgent: '*',
       allow: ['/'],
+      crawlDelay: 1,
       sitemap: [origin + href('/sitemap.xml')],
     },
   ])
