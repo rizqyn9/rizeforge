@@ -1,8 +1,8 @@
-import { cloudflare } from '@cloudflare/vite-plugin'
+// import { cloudflare } from '@cloudflare/vite-plugin'
 import contentCollections from '@content-collections/vite'
 import tailwindcss from '@tailwindcss/vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
-import viteReact from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
@@ -16,20 +16,25 @@ export default defineConfig(({ command }) => {
     },
     plugins: [
       tailwindcss({ optimize: { minify: true } }),
-      cloudflare({
-        viteEnvironment: { name: 'ssr' },
-        configPath: './wrangler.jsonc',
-        experimental: {},
-      }),
+      // cloudflare({
+      //   viteEnvironment: { name: 'ssr' },
+      //   configPath: './wrangler.jsonc',
+      //   experimental: {},
+      // }),
       contentCollections(),
       tsconfigPaths(),
       tanstackStart({
+        sitemap: {
+          enabled: true,
+          host: 'https://www.rizeforge.com',
+          outputPath: './public/sitemap.xml',
+        },
         prerender: {
           // Currently cloudflare does not support prerendering
           enabled: false,
         },
       }),
-      viteReact(),
+      react(),
     ],
   }
 })
