@@ -1,3 +1,5 @@
+import { Link } from '@tanstack/react-router'
+
 export interface PostCardProps {
   slug: string
   title: string
@@ -20,9 +22,14 @@ export function PostCard({
       className='group offset-border relative flex flex-col rounded-lg border bg-neutral-900 transition-colors hover:bg-neutral-800'
       title={title}
     >
-      <a className='absolute inset-0 z-20' href={`/blog/${slug}`} data-discover='true'>
+      <Link
+        className='absolute inset-0 z-20'
+        data-discover='true'
+        to='/blog/$slug'
+        params={{ slug }}
+      >
         <span className='sr-only'>Link to article</span>
-      </a>
+      </Link>
       <div className='z-10 flex flex-col gap-3 rounded-lg border-neutral-700 p-4 hover:bg-neutral-800'>
         <div className='offset-border aspect-video shrink-0 overflow-hidden rounded-sm'>
           <img src={image} alt={title} />

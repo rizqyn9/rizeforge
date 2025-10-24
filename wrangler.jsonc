@@ -6,7 +6,8 @@
 		"nodejs_compat",
 		"enable_nodejs_process_v2"
 	],
-	"main": "./workers/app.ts",
+	// "main": "@tanstack/react-start/server-entry",
+	"main": "./src/server.ts",
 	"vars": {
 		"MY_VAR": "Hello from Cloudflare"
 	},
@@ -26,5 +27,15 @@
 			"binding": "rizeforge",
 			"remote": true
 		}
-	]
+	],
+	"routes": [
+		{
+			"pattern": "www.rizeforge.com",
+			"custom_domain": true
+		},
+		{
+			"pattern": "rizeforge.com",
+			"custom_domain": true
+		}
+	],
 }

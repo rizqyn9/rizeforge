@@ -5,7 +5,7 @@ import rehypeShiki from '@shikijs/rehype'
 import { mdxParse } from 'safe-mdx/parse'
 import { z } from 'zod'
 
-import { transformerCodeBlock } from './app/lib/transformer-code-block'
+import { transformerCodeBlock } from './src/lib/transformer-code-block'
 
 const posts = defineCollection({
   name: 'posts',

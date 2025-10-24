@@ -1,34 +1,33 @@
+import { createFileRoute, notFound } from '@tanstack/react-router'
 import { allPosts } from 'content-collections'
 import { SafeMdxRenderer } from 'safe-mdx'
 
 import CodeBlock from '~/components/ui/code-block'
 
-import type { Route } from './+types'
+export const Route = createFileRoute('/blog/$slug')({
+  loader({ params }) {
+    const { slug } = params
 
-export async function loader({ params }: Route.LoaderArgs) {
-  const { slug } = params
-  const blog = allPosts.find(post => post._meta.path === slug)
+    const blog = allPosts.find(post => post._meta.path === slug)
+    if (!blog) {
+      throw notFound()
+    }
 
-  if (!blog) {
-    throw new Response('Not Found', { status: 404 })
-  }
+    return blog
+  },
+  component: RouteComponent,
+})
 
-  return {
-    title: 'Blog Details',
-    blog,
-  }
-}
-
-export default function Page({ loaderData }: Route.ComponentProps) {
-  const { blog } = loaderData
-  const ast = JSON.parse(blog.astString)
+function RouteComponent() {
+  const { astString, mdx } = Route.useLoaderData()
+  const ast = JSON.parse(astString)
 
   return (
     <div className='container pt-navbar'>
       <h1>Blog Details</h1>
       <div className='shiki prose-sm'>
         <SafeMdxRenderer
-          markdown={blog.mdx}
+          markdown={mdx}
           mdast={ast}
           renderNode={node => {
             if (node.type === 'code') {

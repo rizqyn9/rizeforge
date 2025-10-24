@@ -19,7 +19,7 @@ export default {
   tailwindAttributes: ['tw'],
   tailwindFunctions: functions,
   customFunctions: functions,
-  tailwindStylesheet: './app/styles/tailwind.css',
+  tailwindStylesheet: './src/styles/tailwind.css',
   endingPosition: 'absolute-with-indent',
   importOrder: [
     '^(react/(.*)$)|^(react$)',

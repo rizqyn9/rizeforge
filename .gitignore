@@ -12,3 +12,4 @@
 /tsconfig.*.tsbuildinfo
 /.content-collections
 /.source
+/.tanstack

@@ -1,4 +1,4 @@
-import type { SitemapHandle } from '@forge42/seo-tools/remix/sitemap'
+import { createFileRoute } from '@tanstack/react-router'
 import { allPosts } from 'content-collections'
 
 import { PostCard } from '~/components/block/post-card'
@@ -9,19 +9,11 @@ import { ShimmerButton } from '~/components/ui/shimmer-button'
 import { SOCIALS } from '~/config/socials'
 import { cx } from '~/lib/cva'
 
-export const handle: SitemapHandle<{ foo?: string }> = {
-  sitemap: async (domain, url) => {
-    return [
-      {
-        route: `${domain}${url}`,
-        changefreq: 'monthly',
-        priority: 1.0,
-      },
-    ]
-  },
-}
+export const Route = createFileRoute('/')({
+  component: RouteComponent,
+})
 
-export default function Page() {
+function RouteComponent() {
   return (
     <>
       <HeroSection />
@@ -30,26 +22,6 @@ export default function Page() {
     </>
   )
 }
-
-// function MainSection() {
-//   return (
-//     <div className='relative container mx-auto min-h-dvh px-4'>
-//       {/* <DottedGlowBackground
-//         className='pointer-events-none mask-radial-to-90% mask-[radial-gradient(400px_circle_at_center,white,transparent)]'
-//         color='rgba(0,0,0,0.7)'
-//         glowColor='rgba(0, 170, 255, 0.85)'
-//         darkGlowColor='rgba(0, 170, 255, 0.85)'
-//         colorLightVar='--color-zinc-900'
-//         colorDarkVar='--color-zinc-100'
-//         glowColorLightVar='--color-zinc-900'
-//       /> */}
-//       <StripedPattern
-//         className={`mask-[radial-gradient(400px_circle_at_center,white,transparent)] text-gray-300 opacity-40`}
-//       />
-//       <HeroContent />
-//     </div>
-//   )
-// }
 
 export function HeroSection() {
   return (

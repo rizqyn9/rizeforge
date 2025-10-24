@@ -1,7 +1,8 @@
 import { cloudflare } from '@cloudflare/vite-plugin'
 import contentCollections from '@content-collections/vite'
-import { reactRouter } from '@react-router/dev/vite'
 import tailwindcss from '@tailwindcss/vite'
+import { tanstackStart } from '@tanstack/react-start/plugin/vite'
+import viteReact from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
@@ -21,8 +22,14 @@ export default defineConfig(({ command }) => {
         experimental: {},
       }),
       contentCollections(),
-      reactRouter(),
       tsconfigPaths(),
+      tanstackStart({
+        prerender: {
+          // Currently cloudflare does not support prerendering
+          enabled: false,
+        },
+      }),
+      viteReact(),
     ],
   }
 })
