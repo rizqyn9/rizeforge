@@ -1,6 +1,5 @@
 import { FileCodeIcon } from '@phosphor-icons/react/dist/ssr/FileCode'
 import { FolderSimpleIcon } from '@phosphor-icons/react/dist/ssr/FolderSimple'
-import { codeToHtml } from 'shiki'
 
 import { useCopyToClipboard } from '~/hooks/use-copy-to-clipboard'
 import { cx } from '~/lib/cva'
@@ -19,8 +18,6 @@ export default function CodeBlock({ children, className, ...props }: Props) {
   const language = props['data-language']
   const filename = props['data-filename']
   const noCopy = props['data-no-copy']
-
-  console.log({ props })
 
   const filePaths = filename ? filename.split('/') : []
   const LanguageIcon = language ? (LANGUAGE_FILE_ICONS.get(language) ?? FileCodeIcon) : FileCodeIcon

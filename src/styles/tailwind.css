@@ -12,6 +12,33 @@
   --color-background: oklch(0 0 0);
   --color-foreground: oklch(0.985 0 0);
 
+  /* Color Fumadocs */
+  --color-fd-background: #121212;
+  --color-fd-foreground: #ebebeb;
+  --color-fd-muted: #212121;
+  --color-fd-muted-foreground: #b3b3b3cc;
+  --color-fd-popover: #1e1e1e;
+  --color-fd-popover-foreground: #dedede;
+  --color-fd-card: #191919;
+  --color-fd-card-foreground: #fafafa;
+  --color-fd-border: #6663;
+  --color-fd-primary: #fafafa;
+  --color-fd-primary-foreground: #171717;
+  --color-fd-secondary: #212121;
+  --color-fd-secondary-foreground: #ebebeb;
+  --color-fd-accent: #6868684d;
+  --color-fd-accent-foreground: #e6e6e6;
+  --color-fd-ring: #8c8c8c;
+  --color-fd-overlay: #0003;
+
+  --color-landing-foreground: #e4e2d0;
+  --color-landing-foreground-200: #b7af7e;
+  --color-brand: #fff383;
+  --color-brand-secondary: #ad41e7;
+  --color-brand-secondary-foreground: #f5e4ff;
+  --color-brand-foreground: black;
+  --color-brand-200: #fff7c8;
+
   /* Height of the navbar */
   --spacing-navbar: 64px;
 }
@@ -180,7 +207,7 @@
     }
     .line {
       /* Negative left margin including the border */
-      @apply -ml-4 inline-block min-w-[calc(100%_+_--spacing(8))] border-l-2 border-transparent pl-3.5;
+      @apply -ml-4 inline-block min-w-[calc(100%+--spacing(8))] border-l-2 border-transparent pl-3.5;
       &.add {
         @apply border-green-500 bg-green-500/10 before:text-green-500;
         span {
@@ -247,11 +274,11 @@
 }
 
 .stick-x {
-  --color-runner: oklch(0.705 0.213 47.604);
+  --color-runner: var(--color-brand);
   --color-bg-runner: rgb(54, 54, 54);
   position: relative;
   width: 100%;
-  height: 2px;
+  height: 3px;
   border-radius: 2px;
   background-color: var(--color-bg-runner);
   overflow-x: hidden;

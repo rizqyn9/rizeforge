@@ -6,7 +6,12 @@
     "source.fixAll.eslint": "always",
   },
   "[markdown]": {
-    "editor.formatOnSave": false
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "vscode.markdown-language-features"
+  },
+  "[mdx]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "vscode.markdown-language-features"
   },
   "markdown.styles": [],
   "tailwindCSS.classFunctions": [

@@ -9,7 +9,10 @@
 # Misc
 .DS_Store
 /.wrangler
-/tsconfig.*.tsbuildinfo
+/*.tsbuildinfo
 /.content-collections
 /.source
 /.tanstack
+
+# Local Netlify folder
+.netlify

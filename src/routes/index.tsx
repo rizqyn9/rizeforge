@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { allPosts } from 'content-collections'
 
 import { PostCard } from '~/components/block/post-card'
 import { ScrollIcon } from '~/components/icons'
@@ -7,6 +6,7 @@ import { LightStick } from '~/components/ui/light-stick'
 import { ShimmerButton } from '~/components/ui/shimmer-button'
 
 import { SOCIALS } from '~/config/socials'
+import { getBlogs } from '~/lib/blogs'
 import { cx } from '~/lib/cva'
 
 export const Route = createFileRoute('/')({
@@ -30,10 +30,10 @@ export function HeroSection() {
         className={cx(
           'absolute inset-0',
           'bg-size-[20px_20px]',
-          'bg-[radial-gradient(#404040_1px,transparent_1px)]'
+          'bg-[radial-gradient(#404040_1.3px,transparent_1px)]'
         )}
       />
-      <div className='pointer-events-none absolute inset-0 flex items-center justify-center bg-background mask-[radial-gradient(ellipse_at_center,transparent_10%,var(--color-background)_80%)]' />
+      <div className='pointer-events-none absolute inset-0 flex items-center justify-center bg-fd-background mask-[radial-gradient(circle_at_center,transparent_10%,var(--color-background)_60%)]' />
       <HeroContent />
       <ScrollMotion />
     </div>
@@ -48,20 +48,20 @@ function HeroContent() {
         'animate-in duration-1000 blur-in-lg'
       )}
     >
-      <h1 className={`text-3xl font-semibold md:text-4xl`}>Hi there, i&apos;m Rizqy</h1>
+      <h1 className='text-3xl font-semibold md:text-4xl'>Hi there, i&apos;m Rizqy</h1>
 
-      <div className={`mt-6 px-8 text-center md:mt-8 md:max-w-2xl md:px-0 md:text-xl`}>
-        <p className={`text-gray-100 [&>b]:text-primary`}>
+      <div className='mt-6 px-8 text-center md:mt-8 md:max-w-2xl md:px-0 md:text-xl'>
+        <p className='text-gray-100 [&>b]:text-brand'>
           <b>Fullstack Engineer</b> and mostly <b>Frontend Engineer</b> with a passion for building
           high-performance web applications that scale.
         </p>
       </div>
 
-      <div className={`mt-6 flex gap-4 md:mt-12`}>
+      <div className='mt-6 flex gap-4 md:mt-8'>
         <ShimmerButton>Connect with me</ShimmerButton>
       </div>
 
-      <div className='mt-6 flex flex-row gap-4'>
+      <div className='mt-8 flex flex-row gap-4'>
         {SOCIALS.map(({ label, href, icon }) => (
           <a
             title={label}
@@ -98,29 +98,27 @@ function ScrollMotion() {
 
 function FeaturedPosts() {
   return (
-    <div className='relative container flex max-w-4xl flex-col items-stretch bg-black py-16'>
+    <div className='relative container flex max-w-4xl flex-col items-stretch py-16'>
       <div className='flex items-center justify-between py-4'>
         <h2 className='text-2xl font-bold'>Blogs</h2>
         <p className='animate-pulse'>[ see more ]</p>
       </div>
       <LightStick direction={'x'} />
-      <p className='mx-auto mt-8 max-w-lg text-left text-sm text-white/80 lg:text-center'>
+      <p className='mx-auto mt-8 max-w-lg text-left text-white/80 lg:text-center'>
         A collection of my thoughts, ideas, and experiences. I write about various topics, including
         web development, technology, and personal topics.
       </p>
       <div className='mt-8'>
-        <ul className='grid gap-4 md:grid-cols-2'>
-          {allPosts.map(post => (
+        <ul className='grid gap-4'>
+          {getBlogs({ limit: 3 }).map(post => (
             <PostCard
-              key={post._meta.filePath}
-              slug={post._meta.fileName}
-              title={post.title}
-              description={post.summary}
-              image={
-                'https://images.unsplash.com/photo-1566410824233-a8011929225c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670'
-              }
-              publishedAt={'Sep 29, 2025'}
-              readingTime={'5 min read'}
+              key={post.frontmatter.slug}
+              slug={post.frontmatter.slug}
+              title={post.frontmatter.title}
+              description={post.frontmatter.summary}
+              image={post.frontmatter.image}
+              publishedAt={post.frontmatter.publishedAt}
+              readingTime={post.frontmatter.readingTime}
             />
           ))}
         </ul>
@@ -151,7 +149,7 @@ function FeaturedPosts() {
 
 function ProjectSection() {
   return (
-    <div className='relative container flex max-w-4xl flex-col items-stretch bg-black py-16'>
+    <div className='relative container flex max-w-4xl flex-col items-stretch py-16'>
       <div className='flex items-center justify-between py-4'>
         <div>
           <h2 className='text-2xl font-bold text-primary-foreground'>Projects</h2>

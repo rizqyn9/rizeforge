@@ -37,7 +37,7 @@ export function ShimmerButton({
       }
       className={cx(
         'group relative z-0 flex cursor-pointer items-center justify-center overflow-hidden [border-radius:var(--radius)] border border-white/10 px-6 py-3 whitespace-nowrap text-white [background:var(--bg)]',
-        'transform-gpu transition-transform duration-300 ease-in-out active:translate-y-px',
+        'transform-gpu transition-transform duration-300 ease-in-out hover:text-brand active:translate-y-px',
         className
       )}
       ref={ref}
@@ -46,7 +46,7 @@ export function ShimmerButton({
       {/* spark container */}
       <div className={cx('@container-[size] absolute inset-0 -z-30 overflow-visible blur-[2px]')}>
         <div className='absolute inset-0 aspect-[1] h-[100cqh] animate-shimmer-slide rounded-none [mask:none]'>
-          <div className='absolute -inset-full w-auto [translate:0_0] rotate-0 animate-spin-around [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--color-primary)_var(--spread),transparent_var(--spread))]' />
+          <div className='absolute -inset-full w-auto [translate:0_0] rotate-0 animate-spin-around [background:conic-gradient(from_calc(270deg-(var(--spread)*0.5)),transparent_0,var(--color-brand)_var(--spread),transparent_var(--spread))]' />
         </div>
       </div>
       {children}

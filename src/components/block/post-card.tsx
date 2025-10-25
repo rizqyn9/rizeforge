@@ -31,9 +31,9 @@ export function PostCard({
         <span className='sr-only'>Link to article</span>
       </Link>
       <div className='z-10 flex flex-col gap-3 rounded-lg border-neutral-700 p-4 hover:bg-neutral-800'>
-        <div className='offset-border aspect-video shrink-0 overflow-hidden rounded-sm'>
+        {/* <div className='offset-border aspect-video shrink-0 overflow-hidden rounded-sm'>
           <img src={image} alt={title} />
-        </div>
+        </div> */}
         <div className='flex flex-col gap-2'>
           <div className='flex gap-2 text-xs text-muted-foreground'>
             <time

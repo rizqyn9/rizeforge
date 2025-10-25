@@ -1,4 +1,7 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/719c503f-45d2-4d9d-9279-bbedb2daabf8/deploy-status)](https://app.netlify.com/projects/rizeforge/deploys)
+
 # Welcome to React Router!
+
 
 A modern, production-ready template for building full-stack React applications using React Router.
 

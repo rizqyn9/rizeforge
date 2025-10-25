@@ -1,5 +1,6 @@
 // import { cloudflare } from '@cloudflare/vite-plugin'
 import contentCollections from '@content-collections/vite'
+import netlify from '@netlify/vite-plugin-tanstack-start'
 import tailwindcss from '@tailwindcss/vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import react from '@vitejs/plugin-react'
@@ -26,15 +27,17 @@ export default defineConfig(({ command }) => {
       tanstackStart({
         sitemap: {
           enabled: true,
-          host: 'https://www.rizeforge.com',
-          outputPath: './public/sitemap.xml',
+          host: 'https://rizeforge.com',
         },
         prerender: {
-          // Currently cloudflare does not support prerendering
-          enabled: false,
+          enabled: true,
+          autoSubfolderIndex: true,
+          crawlLinks: true,
+          failOnError: true,
         },
       }),
       react(),
+      netlify({}),
     ],
   }
 })
