@@ -1,5 +1,4 @@
 import { FileCodeIcon } from '@phosphor-icons/react/dist/ssr/FileCode'
-import { FolderSimpleIcon } from '@phosphor-icons/react/dist/ssr/FolderSimple'
 
 import { useCopyToClipboard } from '~/hooks/use-copy-to-clipboard'
 import { cx } from '~/lib/cva'
@@ -19,43 +18,19 @@ export default function CodeBlock({ children, className, ...props }: Props) {
   const filename = props['data-filename']
   const noCopy = props['data-no-copy']
 
-  const filePaths = filename ? filename.split('/') : []
   const LanguageIcon = language ? (LANGUAGE_FILE_ICONS.get(language) ?? FileCodeIcon) : FileCodeIcon
   const { copiedText, copyToClipboard, idle } = useCopyToClipboard()
 
-  //   const html = await codeToHtml(code, {
-  //   lang: 'javascript',
-  //   theme: 'vitesse-dark'
-  // })
-
   return (
     <figure className='group/code-block offset-border rounded-xl'>
-      {filePaths.length > 0 ? (
+      {filename && (
         <figcaption className='flex items-center justify-between rounded-t-xl bg-neutral-800 px-3 py-2 text-xs text-neutral-400'>
           <div className='flex items-center gap-x-0.5'>
-            {filePaths.map((name, index) => {
-              const isLast = index === filePaths.length - 1
-              return (
-                <span
-                  key={`${name}-${index}`}
-                  className={cx(
-                    'inline-flex items-center gap-x-0.5',
-                    isLast ? 'text-foreground' : ''
-                  )}
-                >
-                  {filePaths.length > 1 &&
-                    (!isLast ? (
-                      <FolderSimpleIcon weight='duotone' size={20} aria-hidden='true' />
-                    ) : null)}
-                  {name}
-                  {!isLast && <span>/</span>}
-                </span>
-              )
-            })}
+            <span className={cx('inline-flex items-center gap-x-0.5')}>{filename}</span>
           </div>
           {language && <LanguageIcon weight='duotone' size={20} />}
         </figcaption>
-      ) : null}
+      )}
       <div className='relative'>
         <pre
           {...props}
@@ -74,9 +49,7 @@ export default function CodeBlock({ children, className, ...props }: Props) {
               idle ? 'cursor-pointer hover:text-neutral-300' : ''
             } active:bg-neutral-700`}
             disabled={!idle}
-            onClick={() => {
-              copyToClipboard(code)
-            }}
+            onClick={() => copyToClipboard(code)}
             aria-label={idle ? 'Copy code to clipboard' : 'Code copied'}
             title={idle ? 'Copy code to clipboard' : 'Code copied'}
             tabIndex={0}

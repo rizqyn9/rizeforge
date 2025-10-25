@@ -21,6 +21,7 @@
     "@tanstack/react-start": "^1.133.27",
     "@types/mdx": "^2.0.13",
     "cva": "1.0.0-beta.4",
+    "date-fns": "^4.1.0",
     "fumadocs-core": "^16.0.2",
     "fumadocs-mdx": "^13.0.0",
     "fumadocs-ui": "^16.0.2",

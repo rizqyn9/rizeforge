@@ -50,6 +50,7 @@ export default defineConfig(
       'object-shorthand': ['error', 'always'],
       'no-useless-rename': 'error',
       '@typescript-eslint/ban-ts-comment': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
     },
   }
   // {
