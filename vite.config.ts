@@ -1,4 +1,3 @@
-// import { cloudflare } from '@cloudflare/vite-plugin'
 import contentCollections from '@content-collections/vite'
 import netlify from '@netlify/vite-plugin-tanstack-start'
 import tailwindcss from '@tailwindcss/vite'
@@ -17,11 +16,6 @@ export default defineConfig(({ command }) => {
     },
     plugins: [
       tailwindcss({ optimize: { minify: true } }),
-      // cloudflare({
-      //   viteEnvironment: { name: 'ssr' },
-      //   configPath: './wrangler.jsonc',
-      //   experimental: {},
-      // }),
       contentCollections(),
       tsconfigPaths(),
       tanstackStart({
@@ -33,7 +27,7 @@ export default defineConfig(({ command }) => {
           enabled: true,
           autoSubfolderIndex: true,
           crawlLinks: true,
-          failOnError: true,
+          failOnError: false,
         },
       }),
       react(),

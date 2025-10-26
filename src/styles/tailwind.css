@@ -1,4 +1,4 @@
-@import 'tailwindcss' source('../');
+@import 'tailwindcss';
 @import 'tw-animate-css';
 
 @plugin '@tailwindcss/typography';
@@ -195,15 +195,11 @@
     --tw-ring-offset-color: var(--color-background);
   }
 
-  .prose-base {
-    @apply text-foreground;
-  }
-
-  .prose-sm > ul {
+  .prose-base > ul {
     @apply list-disc;
   }
 
-  .prose-sm > ol {
+  .prose-base > ol {
     @apply list-decimal;
   }
 }

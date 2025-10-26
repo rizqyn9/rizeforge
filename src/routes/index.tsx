@@ -116,7 +116,7 @@ function FeaturedPosts() {
               slug={post.frontmatter.slug}
               title={post.frontmatter.title}
               description={post.frontmatter.summary}
-              image={post.frontmatter.image}
+              image={post.frontmatter.banner}
               publishedAt={post.frontmatter.publishedAt}
               readingTime={post.frontmatter.readingTime}
             />
