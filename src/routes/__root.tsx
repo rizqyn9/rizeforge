@@ -4,41 +4,21 @@ import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
 import { Footer } from '~/components/block/footer'
 import { Header } from '~/components/block/header'
 
+import { CONFIG } from '~/config/config'
+import { metaDefault, scriptDefault } from '~/lib/seo'
+
 import tailwindCss from '../styles/tailwind.css?url'
 
 export const Route = createRootRoute({
   head: () => ({
-    meta: [
-      {
-        charSet: 'utf-8',
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
-    ],
+    meta: metaDefault,
     links: [
       { rel: 'stylesheet', href: tailwindCss },
-      // {
-      //   rel: 'apple-touch-icon',
-      //   sizes: '180x180',
-      //   href: '/apple-touch-icon.png',
-      // },
-      // {
-      //   rel: 'icon',
-      //   type: 'image/png',
-      //   sizes: '32x32',
-      //   href: '/favicon-32x32.png',
-      // },
-      // {
-      //   rel: 'icon',
-      //   type: 'image/png',
-      //   sizes: '16x16',
-      //   href: '/favicon-16x16.png',
-      // },
-      // { rel: 'manifest', href: '/site.webmanifest', color: '#fffff' },
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
       { rel: 'icon', href: '/favicon.ico' },
+      { rel: 'canonical', href: CONFIG.HOST },
     ],
+    scripts: scriptDefault,
   }),
   shellComponent: RootDocument,
 })

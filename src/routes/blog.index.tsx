@@ -6,6 +6,16 @@ import { getBlogs } from '~/lib/blogs'
 
 export const Route = createFileRoute('/blog/')({
   component: RouteComponent,
+  head: () => ({
+    meta: [
+      { title: 'Blogs' },
+      {
+        name: 'description',
+        content:
+          'A collection of my thoughts, ideas, and experiences. I write about various topics, including web development, technology, and personal topics.',
+      },
+    ],
+  }),
 })
 
 function RouteComponent() {
@@ -27,7 +37,7 @@ function RouteComponent() {
             slug={post.frontmatter.slug}
             title={post.frontmatter.title}
             description={post.frontmatter.summary}
-            image={post.frontmatter.image}
+            image={post.frontmatter.banner}
             publishedAt={post.frontmatter.publishedAt}
             readingTime={post.frontmatter.readingTime}
           />

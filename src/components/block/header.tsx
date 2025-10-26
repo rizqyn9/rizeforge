@@ -56,5 +56,5 @@ export function Header() {
 const MENU = [
   { label: 'Blog', href: '/blog' },
   { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+  // { label: 'Contact', href: '/contact' },
 ]

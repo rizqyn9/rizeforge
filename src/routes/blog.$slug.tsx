@@ -30,7 +30,7 @@ function RouteComponent() {
 
   return (
     <>
-      <div className='pointer-events-none absolute -z-1'>
+      <div className='pointer-events-none absolute inset-x-0 -z-1'>
         <div className='relative h-80 w-full overflow-hidden blur-sm'>
           <img
             src={banner}
@@ -41,6 +41,7 @@ function RouteComponent() {
             height='480'
             decoding='async'
             data-nimg='1'
+            className='w-full object-cover'
           />
           <div className='absolute inset-0 z-1 bg-linear-to-t from-fd-background via-transparent to-transparent' />
         </div>
@@ -50,7 +51,7 @@ function RouteComponent() {
           <div className='flex flex-col'>
             <h1 className='text-center text-4xl font-semibold'>{title}</h1>
             {tags?.length && (
-              <div className='mx-auto my-3 flex max-w-[70%] flex-wrap items-center justify-center gap-1.5'>
+              <div className='mx-auto mt-6 mb-3 flex max-w-[70%] flex-wrap items-center justify-center gap-1.5'>
                 {tags.map((tag, index) => (
                   <Badge key={index} variant='tag'>
                     {tag}
