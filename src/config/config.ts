@@ -11,4 +11,10 @@ const CONFIG = {
   TWITTER_USERNAME: 'rizqynugroho4',
 }
 
-export { CONFIG }
+const SITE_URL = 'https://rizeforge.com'
+const SITE_NAME = 'Rizeforge'
+const AUTHOR = 'Rizqy Prastya Ari Nugroho'
+const TWITTER_HANDLE = '@rizqynugroho4'
+const OG_IMAGE = `${SITE_URL}/og-main.png`
+
+export { CONFIG, SITE_URL, SITE_NAME, AUTHOR, TWITTER_HANDLE, OG_IMAGE }

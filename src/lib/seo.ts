@@ -1,7 +1,9 @@
 import { profile } from '@forge42/seo-tools/structured-data/profile'
+import { webApp } from '@forge42/seo-tools/structured-data/web-app'
 import { AnyRouteMatch } from '@tanstack/react-router'
+import type * as s from 'schema-dts'
 
-import { CONFIG } from '~/config/config'
+import { AUTHOR, CONFIG } from '~/config/config'
 
 const MAIN_OG_IMAGE = `${CONFIG.HOST}/og-main.png`
 
@@ -12,10 +14,9 @@ export const metaDefault: AnyRouteMatch['meta'] = [
   { title: `${CONFIG.APP_NAME} | Software Engineer & Fullstack Developer` },
   {
     name: 'description',
-    content:
-      'A full-stack software engineer passionate about crafting performant, user-focused web applications and sharing knowledge through my tech blog.',
+    content: `I'm ${AUTHOR}, a full-stack software engineer passionate about crafting performant, user-focused web applications and sharing knowledge through my tech blog.`,
   },
-  { name: 'author', content: 'Rizqy Prastya Ari Nugroho' },
+  { name: 'author', content: AUTHOR },
   {
     name: 'keywords',
     content:
@@ -33,7 +34,7 @@ export const metaDefault: AnyRouteMatch['meta'] = [
   { property: 'og:title', content: `${CONFIG.APP_NAME} | Software Engineer & Fullstack Developer` },
   {
     property: 'og:description',
-    content: `Personal portfolio and blog of ${CONFIG.APP_NAME}, full-stack developer specializing in React, Node.js, and modern web technologies.`,
+    content: `Portfolio and blog of ${AUTHOR}, a full-stack engineer specializing in React, Node.js, and modern web technologies.`,
   },
   { property: 'og:url', content: CONFIG.HOST },
   { property: 'og:image', content: MAIN_OG_IMAGE },
@@ -49,8 +50,7 @@ export const metaDefault: AnyRouteMatch['meta'] = [
   },
   {
     name: 'twitter:description',
-    content:
-      'Explore my projects, experience, and blogs about software engineering, React, Node.js, and fullstack development.',
+    content: `Explore ${AUTHOR}'s projects, experience, and blogs about fullstack development, React, Node.js, and software engineering.`,
   },
   { name: 'twitter:image', content: MAIN_OG_IMAGE },
 
@@ -60,11 +60,27 @@ export const metaDefault: AnyRouteMatch['meta'] = [
   { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
 ]
 
-export const jsonLdPerson = profile({
-  '@type': 'ProfilePage',
-  name: CONFIG.APP_NAME,
-  url: CONFIG.HOST,
-  image: `${CONFIG.HOST}/icon-large.svg`,
+// Base URLs & constants
+const HOST = CONFIG.HOST
+const PERSON_ID = `${HOST}/#person-me`
+const WEBSITE_ID = `${HOST}/#web-site`
+const WEBPAGE_ID = `${HOST}/#web-page`
+
+// --- PERSON ---
+const personJsonLd: s.Person = {
+  '@type': 'Person',
+  '@id': PERSON_ID,
+  name: 'Rizqy Prastya Ari Nugroho',
+  additionalName: 'Rizqy',
+  email: 'mail@rizeforge.com',
+  knowsLanguage: ['English', 'Indonesian'],
+  nationality: 'Indonesia',
+  skills: ['React', 'Node.js', 'TypeScript', 'Web Development', 'Software Engineering'],
+  url: HOST,
+  image: 'https://ik.imagekit.io/connect2203/rdevblog/me_uxL2hLXqt.png?updatedAt=1701761952485',
+  jobTitle: 'Fullstack Software Engineer',
+  description:
+    'Fullstack software engineer specializing in React, Node.js, and modern web development. Creator of projects and blogs about technology and engineering best practices.',
   sameAs: [
     `https://twitter.com/${CONFIG.TWITTER_USERNAME}`,
     `https://x.com/${CONFIG.TWITTER_USERNAME}`,
@@ -73,28 +89,66 @@ export const jsonLdPerson = profile({
     CONFIG.LINKEDIN_LINK,
     CONFIG.GITHUB_LINK,
   ],
+}
+
+// --- WEBSITE ---
+const webSiteJsonLd: s.WebSite = {
+  '@type': 'WebSite',
+  '@id': WEBSITE_ID,
+  name: CONFIG.APP_NAME,
+  url: HOST,
+  publisher: { '@id': PERSON_ID },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${HOST}/search?q={search_term_string}`,
+  },
+}
+
+// --- WEBAPP ---
+const webAppJsonLd = webApp({
+  '@type': 'WebApplication',
+  name: CONFIG.APP_NAME,
+  url: HOST,
+  description:
+    'Personal portfolio and blog of Rizqy Prastya Ari Nugroho, full-stack developer specializing in React, Node.js, and modern web technologies.',
+  applicationCategory: 'Web development',
+  browserRequirements: 'Requires JavaScript',
+  softwareVersion: '1.0.0',
+  operatingSystem: 'All',
+})
+
+// --- PROFILE PAGE ---
+const jsonLdProfile = profile({
+  '@type': 'ProfilePage',
+  name: CONFIG.APP_NAME,
+  url: HOST,
+  image: `${HOST}/icon-large.svg`,
+  sameAs: personJsonLd.sameAs,
   accountablePerson: {
-    '@type': 'Person',
-    name: 'Rizqy Prastya Ari Nugroho',
-    url: CONFIG.HOST,
-    image: 'https://ik.imagekit.io/connect2203/rdevblog/me_uxL2hLXqt.png?updatedAt=1701761952485',
-    jobTitle: 'Fullstack Software Engineer',
-    description:
-      'Fullstack software engineer specializing in React, Node.js, and modern web development. Creator of projects and blogs about technology and engineering best practices.',
-    sameAs: [
-      `https://twitter.com/${CONFIG.TWITTER_USERNAME}`,
-      `https://x.com/${CONFIG.TWITTER_USERNAME}`,
-      CONFIG.MEDIUM_LINK,
-      CONFIG.BLUSKY_LINK,
-      CONFIG.LINKEDIN_LINK,
-      CONFIG.GITHUB_LINK,
-    ],
+    '@id': PERSON_ID,
   },
 })
 
+// --- WEBPAGE (root) ---
+const webPageJsonLd: s.WebPage = {
+  '@type': 'WebPage',
+  '@id': WEBPAGE_ID,
+  name: CONFIG.APP_NAME,
+  description: `Portfolio and blog of ${AUTHOR}, a full-stack engineer specializing in React, Node.js, and modern web technologies.`,
+  url: HOST,
+  inLanguage: 'en-US',
+  mainEntity: { '@id': PERSON_ID }, // ✅ FIXED mainEntity
+  isPartOf: { '@id': WEBSITE_ID },
+  about: { '@id': PERSON_ID },
+}
+
+// --- COMBINED SCRIPT OUTPUT ---
 export const scriptDefault: AnyRouteMatch['scripts'] = [
   {
     type: 'application/ld+json',
-    children: JSON.stringify(jsonLdPerson),
+    children: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [personJsonLd, webSiteJsonLd, webPageJsonLd, webAppJsonLd, jsonLdProfile],
+    }),
   },
 ]
