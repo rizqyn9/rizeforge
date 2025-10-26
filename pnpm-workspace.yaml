@@ -1,6 +1,8 @@
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
+  - netlify
   - protobufjs
   - sharp
+  - unix-dgram
   - workerd
