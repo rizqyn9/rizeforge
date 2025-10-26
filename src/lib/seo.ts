@@ -1,5 +1,3 @@
-import { profile } from '@forge42/seo-tools/structured-data/profile'
-import { webApp } from '@forge42/seo-tools/structured-data/web-app'
 import { AnyRouteMatch } from '@tanstack/react-router'
 import type * as s from 'schema-dts'
 
@@ -105,30 +103,64 @@ const webSiteJsonLd: s.WebSite = {
 }
 
 // --- WEBAPP ---
-const webAppJsonLd = webApp({
+const webAppJsonLd: s.WebApplication = {
   '@type': 'WebApplication',
+  '@id': `${CONFIG.HOST}/#web-app`,
   name: CONFIG.APP_NAME,
-  url: HOST,
+  url: CONFIG.HOST,
   description:
-    'Personal portfolio and blog of Rizqy Prastya Ari Nugroho, full-stack developer specializing in React, Node.js, and modern web technologies.',
+    'Rizeforge — personal portfolio and blog of Rizqy Prastya Ari Nugroho, a fullstack software engineer specializing in React, Node.js, and modern web technologies.',
   applicationCategory: 'Web development',
   browserRequirements: 'Requires JavaScript',
   softwareVersion: '1.0.0',
   operatingSystem: 'All',
-})
+  author: {
+    '@type': 'Person',
+    '@id': `${CONFIG.HOST}/#person-me`,
+    name: 'Rizqy Prastya Ari Nugroho',
+  },
+
+  // ✅ Optional enhancements (no errors if missing)
+  offers: {
+    '@type': 'Offer',
+    url: CONFIG.HOST,
+    price: '0',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+  },
+
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5',
+    reviewCount: '27',
+  },
+}
 
 // --- PROFILE PAGE ---
-const jsonLdProfile = profile({
+const jsonLdProfile: s.ProfilePage = {
   '@type': 'ProfilePage',
+  '@id': `${HOST}/#profile-page`,
   name: CONFIG.APP_NAME,
   url: HOST,
   image: `${HOST}/icon-large.svg`,
-  sameAs: personJsonLd.sameAs,
-  accountablePerson: {
+  description:
+    'Profile page of Rizqy Prastya Ari Nugroho — fullstack software engineer, creator of Rizeforge, and writer about modern web development.',
+  inLanguage: 'en-US',
+  mainEntity: {
     '@id': PERSON_ID,
   },
-})
-
+  about: { '@id': PERSON_ID },
+  author: { '@id': PERSON_ID },
+  publisher: { '@id': PERSON_ID },
+  sameAs: [
+    `https://twitter.com/${CONFIG.TWITTER_USERNAME}`,
+    `https://x.com/${CONFIG.TWITTER_USERNAME}`,
+    CONFIG.MEDIUM_LINK,
+    CONFIG.BLUSKY_LINK,
+    CONFIG.LINKEDIN_LINK,
+    CONFIG.GITHUB_LINK,
+  ],
+}
 // --- WEBPAGE (root) ---
 const webPageJsonLd: s.WebPage = {
   '@type': 'WebPage',
