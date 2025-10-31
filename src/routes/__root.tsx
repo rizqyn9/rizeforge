@@ -4,7 +4,6 @@ import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
 import { Footer } from '~/components/block/footer'
 import { Header } from '~/components/block/header'
 
-import { CONFIG } from '~/config/config'
 import { metaDefault, scriptDefault } from '~/lib/seo'
 
 import tailwindCss from '../styles/tailwind.css?url'
@@ -16,7 +15,6 @@ export const Route = createRootRoute({
       { rel: 'stylesheet', href: tailwindCss },
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
       { rel: 'icon', href: '/favicon.ico' },
-      { rel: 'canonical', href: CONFIG.HOST },
     ],
     scripts: scriptDefault,
   }),

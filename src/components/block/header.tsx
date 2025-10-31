@@ -32,7 +32,7 @@ export function Header() {
           >
             <span className='sr-only'>Back to home</span>
           </Link>
-          <img src='/logo-dark.svg' width='213' height='28' className='w-24' />
+          <img src='/logo-dark.svg' width='213' height='28' className='w-24' alt='Rizeforge Logo' />
         </div>
 
         <div>

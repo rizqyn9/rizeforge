@@ -30,18 +30,20 @@ function RouteComponent() {
           topics.
         </h2>
       </div>
-      <div className='mx-auto mb-16 flex grow flex-col items-stretch justify-center gap-4 pt-16'>
-        {getBlogs({}).map(post => (
-          <PostCard
-            key={post.frontmatter.slug}
-            slug={post.frontmatter.slug}
-            title={post.frontmatter.title}
-            description={post.frontmatter.summary}
-            image={post.frontmatter.banner}
-            publishedAt={post.frontmatter.publishedAt}
-            readingTime={post.frontmatter.readingTime}
-          />
-        ))}
+      <div className='mx-auto mb-16 grow flex-col items-stretch justify-center gap-4 pt-16'>
+        <ul className='flex flex-col items-stretch justify-center gap-4'>
+          {getBlogs({}).map(post => (
+            <PostCard
+              key={post.frontmatter.slug}
+              slug={post.frontmatter.slug}
+              title={post.frontmatter.title}
+              description={post.frontmatter.summary}
+              image={post.frontmatter.banner}
+              publishedAt={post.frontmatter.publishedAt}
+              readingTime={post.frontmatter.readingTime}
+            />
+          ))}
+        </ul>
       </div>
     </div>
   )
