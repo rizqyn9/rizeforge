@@ -1,5 +1,7 @@
+import { useEffect } from 'react'
 import { MDXContent } from '@content-collections/mdx/react'
 import { createFileRoute, notFound } from '@tanstack/react-router'
+import { useGoogleTagManager } from '@tracktor/react-google-tag-manager'
 import { allBlogs } from 'content-collections'
 
 import { Badge } from '~/components/ui/badge'
@@ -27,6 +29,19 @@ export const Route = createFileRoute('/blog/$slug')({
 function RouteComponent() {
   const { mdx, frontmatter } = Route.useLoaderData()
   const { title, publishedAt, banner, tags } = frontmatter
+  const gtm = useGoogleTagManager()
+
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     window.dataLayer = window.dataLayer || []
+  //     function gtag() {
+  //       dataLayer.push(arguments)
+  //     }
+  //     gtag('js', new Date())
+
+  //     gtag('config', 'G-1ZRRQ5YQ1N')
+  //   }
+  // }, [])
 
   return (
     <>

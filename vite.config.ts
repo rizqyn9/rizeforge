@@ -23,15 +23,21 @@ export default defineConfig(({ command }) => {
           enabled: true,
           host: 'https://rizeforge.com',
         },
-        prerender: {
+        spa: {
           enabled: true,
-          autoSubfolderIndex: true,
-          crawlLinks: true,
-          failOnError: false,
+          prerender: {
+            crawlLinks: true,
+          },
         },
+        // prerender: {
+        //   enabled: true,
+        //   autoSubfolderIndex: true,
+        //   crawlLinks: true,
+        //   failOnError: false,
+        // },
       }),
       react(),
-      netlify({}),
+      // netlify({}),
     ],
   }
 })

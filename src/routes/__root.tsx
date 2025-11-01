@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
+import { GoogleTagManagerProvider } from '@tracktor/react-google-tag-manager'
 
 import { Footer } from '~/components/block/footer'
 import { Header } from '~/components/block/header'
@@ -31,10 +32,13 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className='flex min-h-lvh flex-col'>
-        <Header />
-        <main className='flex grow flex-col'>{children}</main>
-        <Footer />
+        <GoogleTagManagerProvider id='G-1ZRRQ5YQ1N'>
+          <Header />
+          <main className='flex grow flex-col'>{children}</main>
+          <Footer />
+        </GoogleTagManagerProvider>
         <Scripts />
+        <script async src='https://www.googletagmanager.com/gtag/js?id=G-1ZRRQ5YQ1N' />
       </body>
     </html>
   )

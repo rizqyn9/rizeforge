@@ -20,6 +20,9 @@ importers:
       '@tanstack/react-start':
         specifier: ^1.133.27
         version: 1.133.27(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.1.12(@types/node@22.18.12)(jiti@2.6.1)(lightningcss@1.30.2)(tsx@4.20.6)(yaml@2.8.1))
+      '@tracktor/react-google-tag-manager':
+        specifier: ^1.4.4
+        version: 1.4.4(@tracktor/react-utils@1.24.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       cva:
         specifier: 1.0.0-beta.4
         version: 1.0.0-beta.4(typescript@5.9.3)
@@ -3172,6 +3175,19 @@ packages:
 
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
+
+  '@tracktor/react-google-tag-manager@1.4.4':
+    resolution: {integrity: sha512-20UzetvnP1U08MO8g88gPIwvdLTdR7NBsRJkHEsAYhdBXll8us6GolNc+LYLbaJOO8L7KMgnCWGIjUlmJCiP8A==}
+    peerDependencies:
+      '@tracktor/react-utils': '*'
+      react: ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  '@tracktor/react-utils@1.24.1':
+    resolution: {integrity: sha512-YnFwGrmWQVOWHd3ZSumtb67oXsVhOX92HyDLyjOkY6XuUnn+B3bCiaYBXHlp75VYnjHpW2ouPzDDn5ANb6n2kw==}
+    peerDependencies:
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
 
   '@tsconfig/node10@1.0.11':
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
@@ -11319,6 +11335,17 @@ snapshots:
   '@tanstack/virtual-file-routes@1.133.19': {}
 
   '@tokenizer/token@0.3.0': {}
+
+  '@tracktor/react-google-tag-manager@1.4.4(@tracktor/react-utils@1.24.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+    dependencies:
+      '@tracktor/react-utils': 1.24.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+
+  '@tracktor/react-utils@1.24.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+    dependencies:
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
 
   '@tsconfig/node10@1.0.11': {}
 
