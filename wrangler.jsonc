@@ -1,0 +1,29 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "rizeforge",
+  "compatibility_date": "2025-09-15",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "enable_nodejs_process_v2"
+  ],
+  "main": "@tanstack/react-start/server-entry",
+  "vars": {},
+  "observability": {
+    "logs": {
+      "enabled": false,
+      "head_sampling_rate": 1,
+      "invocation_logs": true
+    }
+  },
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "rizeforge.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.rizeforge.com",
+      "custom_domain": true
+    }
+  ]
+}

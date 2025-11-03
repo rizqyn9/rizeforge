@@ -32,16 +32,16 @@ export function Header() {
           >
             <span className='sr-only'>Back to home</span>
           </Link>
-          <img src='/logo-dark.svg' width='213' height='28' className='w-24' alt='Rizeforge Logo' />
+          <img src='/logo-dark.svg' width='213' height='28' className='w-36' alt='Rizeforge Logo' />
         </div>
 
         <div>
-          <nav className='flex items-center gap-3'>
+          <nav className='flex items-center gap-6'>
             {MENU.map(({ label, href }) => (
               <a
                 key={label}
                 href={href}
-                className='text-sm font-semibold text-gray-300 transition-colors hover:text-foreground'
+                className='font-semibold text-gray-300 transition-colors hover:text-foreground'
               >
                 {label}
               </a>

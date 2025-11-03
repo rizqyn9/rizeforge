@@ -13,7 +13,7 @@ export const SOCIALS = [
   },
   {
     label: 'BluSky',
-    href: 'https://blu-sky.com/rizqy',
+    href: 'https://bsky.app/profile/rizqyn.bsky.social',
     icon: <BluSkyIcon />,
   },
   {
@@ -23,7 +23,7 @@ export const SOCIALS = [
   },
   {
     label: 'Resume',
-    href: 'https://rizqy.com/resume',
+    href: 'https://rizeforge.com/resume-rizqy.pdf',
     icon: <ReadCvIcon />,
   },
 ]

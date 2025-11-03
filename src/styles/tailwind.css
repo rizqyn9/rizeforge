@@ -38,7 +38,7 @@
   --color-brand-200: #fff7c8;
 
   /* Height of the navbar */
-  --spacing-navbar: 64px;
+  --spacing-navbar: 72px;
 }
 
 :root {
@@ -212,6 +212,7 @@
   position: relative;
   width: 1px;
   height: 100%;
+  border-radius: 2px;
   background-color: #333;
 }
 
@@ -221,6 +222,7 @@
   width: 100%;
   height: 25%;
   background: linear-gradient(to bottom, transparent, white, transparent);
+  animation: runnerAnimationY 2s ease-in-out infinite;
   box-shadow: 0 0 1px white;
 }
 
@@ -265,7 +267,6 @@
   0%,
   100% {
     transform: translateY(0);
-    /* top: 0%; */
     opacity: 0.5;
   }
   25%,
@@ -274,7 +275,6 @@
   }
   50% {
     transform: translateY(300%);
-    /* top: 0%; */
     opacity: 0.5;
   }
 }

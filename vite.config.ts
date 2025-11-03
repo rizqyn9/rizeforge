@@ -1,5 +1,6 @@
+import { cloudflare } from '@cloudflare/vite-plugin'
 import contentCollections from '@content-collections/vite'
-import netlify from '@netlify/vite-plugin-tanstack-start'
+// import netlify from '@netlify/vite-plugin-tanstack-start'
 import tailwindcss from '@tailwindcss/vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import react from '@vitejs/plugin-react'
@@ -15,6 +16,7 @@ export default defineConfig(({ command }) => {
       host: true,
     },
     plugins: [
+      cloudflare({ viteEnvironment: { name: 'ssr' } }),
       tailwindcss({ optimize: { minify: true } }),
       contentCollections(),
       tsconfigPaths(),
@@ -22,22 +24,17 @@ export default defineConfig(({ command }) => {
         sitemap: {
           enabled: true,
           host: 'https://rizeforge.com',
+          outputPath: '/public/sitemap.xml',
         },
-        // spa: {
+        // prerender: {
         //   enabled: true,
-        //   prerender: {
-        //     crawlLinks: true,
-        //   },
+        //   autoSubfolderIndex: true,
+        //   crawlLinks: false,
+        //   failOnError: false,
         // },
-        prerender: {
-          enabled: true,
-          autoSubfolderIndex: true,
-          crawlLinks: true,
-          failOnError: false,
-        },
       }),
       react(),
-      netlify({}),
+      // netlify({}),
     ],
   }
 })
