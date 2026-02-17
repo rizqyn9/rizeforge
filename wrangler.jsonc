@@ -25,5 +25,8 @@
       "pattern": "www.rizeforge.com",
       "custom_domain": true
     }
-  ]
+  ],
+  "assets": {
+    "directory": "./dist/client/"
+  }
 }

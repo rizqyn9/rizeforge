@@ -24,14 +24,22 @@ export default defineConfig(({ command }) => {
         sitemap: {
           enabled: true,
           host: 'https://rizeforge.com',
-          outputPath: '/public/sitemap.xml',
         },
-        // prerender: {
+        // spa: {
         //   enabled: true,
-        //   autoSubfolderIndex: true,
-        //   crawlLinks: false,
+        //   prerender: {
+        //     crawlLinks: true,
+        //   },
+        // },
+        // prerender: {
         //   failOnError: false,
         // },
+        prerender: {
+          enabled: true,
+          autoSubfolderIndex: true,
+          crawlLinks: false,
+          failOnError: false,
+        },
       }),
       react(),
       // netlify({}),

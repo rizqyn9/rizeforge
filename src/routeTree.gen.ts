@@ -46,7 +46,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/blog/$slug': typeof BlogSlugRoute
-  '/blog': typeof BlogIndexRoute
+  '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -65,7 +65,7 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/robots.txt' | '/blog/$slug' | '/blog'
+  fullPaths: '/' | '/about' | '/robots.txt' | '/blog/$slug' | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to: '/' | '/about' | '/robots.txt' | '/blog/$slug' | '/blog'
   id: '__root__' | '/' | '/about' | '/robots.txt' | '/blog/$slug' | '/blog/'
@@ -105,7 +105,7 @@ declare module '@tanstack/react-router' {
     '/blog/': {
       id: '/blog/'
       path: '/blog'
-      fullPath: '/blog'
+      fullPath: '/blog/'
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
