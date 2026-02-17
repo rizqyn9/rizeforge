@@ -5,6 +5,7 @@ import { GoogleTagManagerProvider } from '@tracktor/react-google-tag-manager'
 import { Footer } from '~/components/block/footer'
 import { Header } from '~/components/block/header'
 
+import { CONFIG } from '~/config/config'
 import { metaDefault, scriptDefault } from '~/lib/seo'
 
 import tailwindCss from '../styles/tailwind.css?url'
@@ -32,13 +33,24 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className='flex min-h-lvh flex-col'>
-        <GoogleTagManagerProvider id='G-1ZRRQ5YQ1N'>
+        <GoogleTagManagerProvider id={CONFIG.GTM_ID}>
           <Header />
           <main className='flex grow flex-col'>{children}</main>
           <Footer />
         </GoogleTagManagerProvider>
         <Scripts />
-        <script async src='https://www.googletagmanager.com/gtag/js?id=G-1ZRRQ5YQ1N' />
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${CONFIG.GTM_ID}`} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', '${CONFIG.GTM_ID}');
+            `,
+          }}
+        />
       </body>
     </html>
   )

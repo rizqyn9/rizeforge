@@ -9,6 +9,8 @@ const CONFIG = {
   BLUSKY_LINK: 'https://blu-sky.com/rizqy',
   MEDIUM_LINK: 'https://medium.com/@rizqynugroho88',
   TWITTER_USERNAME: 'rizqynugroho4',
+
+  GTM_ID: 'G-1ZRRQ5YQ1N',
 }
 
 const SITE_URL = 'https://rizeforge.com'

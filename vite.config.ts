@@ -37,7 +37,7 @@ export default defineConfig(({ command }) => {
         prerender: {
           enabled: true,
           autoSubfolderIndex: true,
-          crawlLinks: false,
+          crawlLinks: true,
           failOnError: false,
         },
       }),

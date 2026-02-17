@@ -8,7 +8,7 @@ export function Footer() {
       </div>
       <div className='flex items-center gap-3 py-8'>
         <a
-          href='https://github.com/rizqy'
+          href='https://github.com/rizqyn9'
           target='_blank'
           rel='noreferrer'
           className='text-sm font-semibold text-gray-300 transition-colors hover:text-foreground'
@@ -16,12 +16,12 @@ export function Footer() {
           GitHub
         </a>
         <a
-          href='https://twitter.com/rizqy'
+          href='https://linkedin.com/in/rizqynugroho9'
           target='_blank'
           rel='noreferrer'
           className='text-sm font-semibold text-gray-300 transition-colors hover:text-foreground'
         >
-          Twitter
+          LinkedIn
         </a>
       </div>
     </footer>
